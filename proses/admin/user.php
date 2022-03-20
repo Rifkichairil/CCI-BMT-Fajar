@@ -88,7 +88,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-6 col-lg-6 ">
             <a href="../crudnasabah/tambah.php" class="btn btn-primary mb-2">Tambah data</a>
-            <a href="cetak.php" class="btn btn-dark mb-2">Print</a>
+            <a href="../../cetak.php" class="btn btn-dark mb-2">Print</a>
             <table class="table table-striped table-hover table-bordered" id="data">
                 <thead>
                     <tr align="center">

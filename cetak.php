@@ -1,5 +1,5 @@
 <?php
-include('koneksi.php');
+include('proses/koneksi/koneksi.php');
 ?>
 
 <div class="container-fluid">
@@ -20,9 +20,9 @@ include('koneksi.php');
                 </thead>
                 <tbody>
                 <?php 
-		include 'koneksicrud.php';
+		include 'proses/koneksi/koneksicrud.php';
 		$no = 1;
-		$data = mysqli_query($koneksi,"select * from tb_nasabah");
+		$data = mysqli_query($koneksi,"select * from nasabah");
 		while($d = mysqli_fetch_array($data)){
 			?>
              
@@ -30,8 +30,8 @@ include('koneksi.php');
 				<td><?php echo $no++; ?></td> 
 				<td><?php echo $d['id']; ?></td>
 				<td><?php echo $d['nama']; ?></td>
-        <td><?php echo $d['alamat']; ?></td>
-        <td><?php echo $d['ktp']; ?></td>
+                <td><?php echo $d['alamat']; ?></td>
+                <td><?php echo $d['ktp']; ?></td>
 				<td><?php echo $d['gender']; ?></td>
 				<td><?php echo $d['telp']; ?></td>
 			</tr>
@@ -45,5 +45,5 @@ include('koneksi.php');
     include "template/footer.php";
 ?>
 <script>
-        window.print();
-    </script> 
+    window.print();
+</script> 

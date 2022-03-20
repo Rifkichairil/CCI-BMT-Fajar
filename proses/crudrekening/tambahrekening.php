@@ -1,5 +1,5 @@
 <?php
-include('koneksi.php');
+include('../koneksi/koneksi.php');
 
 ?>
 <?php
@@ -11,7 +11,7 @@ if(!isset($_SESSION['login'])){
 // cek user
 if(($_SESSION['level']!="admin")){
 die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
-    window.location = 'halaman_admin.php'</script>'");
+    window.location = '../admin/halaman_admin.php'</script>'");
 //Jika Bukan Admin tidak bisa Lanjut
 }
 ?>
@@ -28,14 +28,14 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
   
   <!-- Icons-->
-  <link href="vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendors/css/simple-line-icons.css" rel="stylesheet">
+  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
+  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
-  <link href="css/style.min.css" rel="stylesheet">
-  <link href="css/costum.css" rel="stylesheet">
-  <link href="css/pace.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
+  <link href="../../css/style.min.css" rel="stylesheet">
+  <link href="../../css/costum.css" rel="stylesheet">
+  <link href="../../css/pace.min.css" rel="stylesheet">
 
 </head>
 
@@ -113,15 +113,15 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
             <div class="card">
                 <div class="card-body">
                 <div class="hitung">
-                <form method="post" action="rekening_aksi.php">
+                <form method="post" action="../crudrekening/rekening_aksi.php">
                     <div class="form-group ">
-                  <label>Id Nasabah</label>
-                  <select name="id" id="id" class="form-control" onchange="changeValue(this.value)" required >  
+                  <label>Nasabah</label>
+                  <select name="nasabah_id" id="nasabah_id" class="form-control" onchange="changeValue(this.value)" required >  
                            <option value="">Pilih..</option>
 						   <?php
-						   include "koneksi.php";  
-                          $query = mysqli_query($koneksi, "select * from tb_nasabah");  
-                          $result = mysqli_query($koneksi, "select * from tb_nasabah");  
+						   include "../koneksi/koneksi.php";  
+                          $query = mysqli_query($koneksi, "select * from nasabah");  
+                          $result = mysqli_query($koneksi, "select * from nasabah");  
                           
                           $b          = "nama= new Array();\n;"; 
                           while ($d = mysqli_fetch_array($result)) {  

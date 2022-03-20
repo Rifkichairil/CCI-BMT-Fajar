@@ -86,42 +86,42 @@
     <h2 align="center" class="pt-3 pb-3">Rekening</h2>
     <div class="row justify-content-center">
         <div class="col-sm-6 col-lg-6 ">
-            <a href="tambahrekening.php" class="btn btn-primary mb-2">Tambah data</a>
-            <a href="cetak.php" class="btn btn-dark mb-2">Print</a>
+            <a href="../crudrekening/tambahrekening.php" class="btn btn-primary mb-2">Tambah data</a>
+            <a href="../crudrekening/cetak.php" class="btn btn-dark mb-2">Print</a>
             <table class="table table-striped table-hover table-bordered" id="data">
                 <thead>
                     <tr align="center">
                         <th>No</th>
                         <th>Id Nasabah</th>
                         <th>Nama</th>
-			            <th>Nomor Rekening</th>
-			            <th>Tanggal Buka</th>
-			            <th>Saldo</th>
-			            <th>Saldo Akhir</th>
-			            <th>OPSI</th>
+                        <th>Nomor Rekening</th>
+                        <th>Tanggal Buka</th>
+                        <th>Saldo</th>
+                        <th>Saldo Akhir</th>
+                        <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-		include 'koneksicrud.php';
+		include '../koneksi/koneksicrud.php';
 		$no = 1;
-		$data = mysqli_query($koneksi,"select * from tb_rek");
+		$data = mysqli_query($koneksi,"select * from rekening");
 		while($d = mysqli_fetch_array($data)){
 			?>
                 <tr align="center">
-                <td><?php echo $no++; ?></td>
-	        	<td><?php echo $d['id']; ?></td>
-            <td><?php echo $d['nama']; ?></td>
-				<td><?php echo $d['rek']; ?></td>
-				<td><?php echo $d['tgl_buka']; ?></td>
-                <td><?php echo $d['awal']; ?></td>
-                <td><?php echo $d['akhir']; ?></td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="edit_rekening.php?id=<?=$d['id']?>"  class="btn btn-info">Edit</a>
-                            <a href="delete_rekening.php?id=<?=$d['id']?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">Hapus</a>
-                        </div>
-                    </td>
+                  <td><?php echo $no++; ?></td>
+                  <td><?php echo $d['nasabah_id']; ?></td>
+                  <td><?php echo $d['nama']; ?></td>
+                  <td><?php echo $d['rek']; ?></td>
+                  <td><?php echo $d['tgl_buka']; ?></td>
+                  <td><?php echo $d['awal']; ?></td>
+                  <td><?php echo $d['akhir']; ?></td>
+                  <td>
+                      <div class="btn-group">
+                          <a href="../crudrekening/edit_rekening.php?id=<?=$d['id']?>"  class="btn btn-info">Edit</a>
+                          <a href="../crudrekening/delete_rekening.php?id=<?=$d['id']?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">Hapus</a>
+                      </div>
+                  </td>
                 </tr>
                 <?php } ?>
             </tbody>

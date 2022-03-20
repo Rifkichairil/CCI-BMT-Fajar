@@ -1,8 +1,8 @@
 
 <?php 
-include "koneksicrud.php";
+include '../koneksi/koneksicrud.php';
 $id = $_GET['id'];
-$query = mysqli_query($koneksi, "select * from tb_rek where id ='$id'");
+$query = mysqli_query($koneksi, "select * from rekening where id ='$id'");
 $data= mysqli_fetch_array($query);
 ?>
 
@@ -19,14 +19,14 @@ $data= mysqli_fetch_array($query);
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
  
   <!-- Icons-->
-  <link href="vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendors/css/simple-line-icons.css" rel="stylesheet">
+  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
+  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
-  <link href="css/style.min.css" rel="stylesheet">
-  <link href="css/costum.css" rel="stylesheet">
-  <link href="css/pace.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
+  <link href="../../css/style.min.css" rel="stylesheet">
+  <link href="../../css/costum.css" rel="stylesheet">
+  <link href="../../css/pace.min.css" rel="stylesheet">
 
 </head>
 
@@ -107,38 +107,38 @@ $data= mysqli_fetch_array($query);
             <div class="card">
                 <div class="card-body">
                 
-                <form method="post" action="proses_editrekening.php">
-                    
-        <div class="form-group">
-        <label>Id Nasabah</label>
-		    <input type="text" name="id" class="form-control" value="<?php echo $data["id"] ?>">
-        </div>
-        <div class="form-group">
-        <label>Nama</label>
-		    <input type="text" name="nama" class="form-control" value="<?php echo $data["nama"] ?>">
-        </div>
-        <div class="form-group">
-				<label>Nomor Rekening</label>
-				<input type="text" name="rek" class="form-control" value="<?php echo $data["rek"] ?>"> 
-                </div>
-         <div class="form-group">
-				<label>Tanggal Buka</label>
-                <input type="date" name="tgl_buka" class="form-control" value="<?php echo $data["tgl_buka"] ?>"
-                </div>
-            <div class="form-group">
-				<label>Saldo Awal</label>
-                <input type="text" name="awal" class="form-control" value="<?php echo $data["awal"] ?>"
-</div>
+                <form method="post" action="../crudrekening/proses_editrekening.php">
 
-<div class="form-group">
-				<label>Saldo Akhir</label>
-                <input type="text" name="akhir" class="form-control" value="<?php echo $data["akhir"] ?>"
-</div>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="SIMPAN"></td>
-			</tr>		
-		</table>
-	</form>
+                      <input type="hidden" name="id" value="<?php echo $data["id"] ?>" >
+                      <div class="form-group">
+                          <label>Id Nasabah</label>
+                          <input type="text" name="nasabah_id" class="form-control" value="<?php echo $data["nasabah_id"] ?>"  readonly >
+                      </div>
+                      <div class="form-group">
+                          <label>Nama</label>
+                          <input type="text" name="nama" class="form-control" value="<?php echo $data["nama"] ?>" readonly >
+                      </div>
+                      <div class="form-group">
+                          <label>Nomor Rekening</label>
+                          <input type="text" name="rek" class="form-control" value="<?php echo $data["rek"] ?>"> 
+                      </div>
+                      <div class="form-group">
+                          <label>Tanggal Buka</label>
+                          <input type="date" name="tgl_buka" class="form-control" value="<?php echo $data["tgl_buka"] ?>"
+                      </div>
+                      <div class="form-group">
+                          <label>Saldo Awal</label>
+                          <input type="text" name="awal" class="form-control" value="<?php echo $data["awal"] ?>"
+                      </div>
+                      <div class="form-group">
+                          <label>Saldo Akhir</label>
+                          <input type="text" name="akhir" class="form-control" value="<?php echo $data["akhir"] ?>"
+                      </div>
+                <tr>
+                  <td></td>
+                  <td><input type="submit" value="SIMPAN"></td>
+                </tr>		
+              </table>
+            </form>
 </body>
 </html>

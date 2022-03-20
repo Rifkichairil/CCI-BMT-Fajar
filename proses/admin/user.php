@@ -15,7 +15,7 @@
   <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
   <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
+  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
   <link href="../../css/style.min.css" rel="stylesheet">
   <link href="../../css/costum.css" rel="stylesheet">
   <link href="../../css/pace.min.css" rel="stylesheet">
@@ -121,8 +121,8 @@
                
 				<td>
           <div class="btn-group">		
-            <a href="edit.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
-            <a href="delete.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
+            <a href="../crudnasabah/edit.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
+            <a href="../crudnasabah/delete.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
           </div>
 				</td>
 			</tr>

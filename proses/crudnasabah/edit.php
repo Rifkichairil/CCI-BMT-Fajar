@@ -1,7 +1,7 @@
 <?php 
-include "koneksicrud.php";
+include '../koneksi/koneksicrud.php';
 $id = $_GET['id'];
-$query = mysqli_query($koneksi, "select * from tb_nasabah where id ='$id'");
+$query = mysqli_query($koneksi, "select * from nasabah where id ='$id'");
 $data= mysqli_fetch_array($query);
 ?>
 
@@ -18,26 +18,23 @@ $data= mysqli_fetch_array($query);
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
   
   <!-- Icons-->
-  <link href="vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendors/css/simple-line-icons.css" rel="stylesheet">
+  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
+  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
-  <link href="css/style.min.css" rel="stylesheet">
-  <link href="css/costum.css" rel="stylesheet">
-  <link href="css/pace.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
+  <link href="../../css/style.min.css" rel="stylesheet">
+  <link href="../../css/costum.css" rel="stylesheet">
+  <link href="../../css/pace.min.css" rel="stylesheet">
 
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-  <header class="app-header navbar">
+<header class="app-header navbar">
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="./">
-      <img class="navbar-brand-full" src="img/logobmt.png" width="120" height="50">
-     
-    </a>
+    
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,6 +47,7 @@ $data= mysqli_fetch_array($query);
           <div class="dropdown-header text-center">
             <strong>Pengaturan Akun</strong>
           </div>
+         
           <a class="dropdown-item" href="logout.php">
             <i class="fa fa-lock"></i> Logout</a>
         </div>
@@ -95,7 +93,7 @@ $data= mysqli_fetch_array($query);
 <body>
  	
 <div class ="pull-right">
-                <a href="user.php" class="btn btn-warning btn-xs"></a>
+                <a href="../admin/user.php" class="btn btn-warning btn-xs"></a>
                 </div>
 
     <div class="container-fluid">
@@ -105,33 +103,33 @@ $data= mysqli_fetch_array($query);
             <div class="card">
                 <div class="card-body">
                 
-                <form method="post" action="proses_edit.php">
+                <form method="post" action="../crudnasabah/proses_edit.php">
                     <div class="form-group ">
-        <label>Id Nasabah</label>
-		    <input type="text" name="id" class="form-control" value="<?php echo $data["id"] ?>">
-        </div>
-        <div class="form-group">
-        <label>Nama</label>
-		    <input type="text" name="nama" class="form-control" value="<?php echo $data["nama"] ?>">
-        </div>
-        <div class="form-group">
-				<label>Alamat</label>
-                <input type="text" name="alamat" class="form-control" value="<?php echo $data["alamat"] ?>"
-                </div>
+                  <label>Id Nasabah</label>
+                  <input type="text" name="id" class="form-control" value="<?php echo $data["id"] ?>">
+                  </div>
+                  <div class="form-group">
+                  <label>Nama</label>
+                  <input type="text" name="nama" class="form-control" value="<?php echo $data["nama"] ?>">
+                  </div>
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <input type="text" name="alamat" class="form-control" value="<?php echo $data["alamat"] ?>"
+                  </div>
+                  <div class="form-group">
+                  <label>NOMOR KTP/SIM</label>
+                  <input type="text" name="ktp" class="form-control" value="<?php echo $data["ktp"] ?>">
+                  </div>
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control" name="gender" value=>
+                      <option value="gender">-Pilih gender-<?php echo $data["gender"] ?></option>
+                      <option value="Perempuan">Perempuan</option>
+                      <option value="Laki-laki">Laki-Laki</option>
+                    </select>
+                  </div>
                 <div class="form-group">
-        <label>NOMOR KTP/SIM</label>
-		    <input type="text" name="ktp" class="form-control" value="<?php echo $data["ktp"] ?>">
-        </div>
-        <div class="form-group">
-                  <label>Gender</label>
-                  <select class="form-control" name="gender" value=>
-                    <option value="gender">-Pilih gender-<?php echo $data["gender"] ?></option>
-                    <option value="Perempuan">Perempuan</option>
-                    <option value="Laki-laki">Laki-Laki</option>
-                  </select>
-                </div>
-                <div class="form-group">
-				<label>No Telfon</label>
+                <label>No Telfon</label>
                 <input type="text" name="telp" class="form-control" value="<?php echo $data["telp"] ?>"
                 </div>
 			<tr>

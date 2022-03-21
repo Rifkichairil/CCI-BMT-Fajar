@@ -16,86 +16,87 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>BMT FAJAR</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-  <meta name="author" content="Lukasz Holeczek">
-  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  
-  <!-- Icons-->
-  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
-  <!-- Main styles for this application-->
-  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
-  <link href="../../css/style.min.css" rel="stylesheet">
-  <link href="../../css/costum.css" rel="stylesheet">
-  <link href="../../css/pace.min.css" rel="stylesheet">
 
-</head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <?php
-    include "../../template/header.php";
+    include('../../template/head.php')
 ?>
+<body>
+    <div class="container-scroller">
+    <?php
+        include('../../template/navbar.php')
+    ?>
 
-<div class="app-body">
-<?php
-    include "../../template/sidebar_crud.php";
-?>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php
+        include('../../template/sidebar_crud.php')
+    ?>
 
-    <div class ="pull-right">
-                <a href="../admin/pegawai.php" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-chevron-left"></i>Kembali</a>
-                </div>
-
-    <div class="container-fluid">
-    <h2 align="center" class="pt-3 pb-3">Tambah Data Admin</h2>
-    <div class="row justify-content-center">
-        <div class="col-sm-6 col-lg-5 ">
-            <div class="card">
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            
+        <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
-                <form method="post" action="pegawai_aksi.php">
-                    <!-- <div class="form-group ">
-                      <label>Id Pegawai</label>
-                      <input type="text" name="id_pegawai" class="form-control" placeholder="isi id pegawai" required>
-                    </div> -->
-                    <div class="form-group">
-                  <label>Nama</label>
-                  <input type="text" name="nama" class="form-control" placeholder="isi nama" required>
+                  <h4 class="card-title">Tambah Pegawai</h4>
+                  <form class="forms-sample" action="../crudpegawai/pegawai_aksi.php" method="POST">
+                    
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" placeholder="isi nama" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <input type="textarea" name="alamat" class="form-control" placeholder="isi alamat" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" name="jabatan" class="form-control" placeholder="isi jabatan" required>
+                  </div>
+                  <div class="form-group ">
+                      <label>Username</label>
+                      <input type="text" name="username" class="form-control" placeholder="isi username" required>
+                    </div>
+                  <div class="form-group ">
+                      <label>Password</label>
+                      <input type="text" name="password" class="form-control" placeholder="isi password" required>
+                    </div>
+                  <div class="form-group ">
+                      <label>Level</label>
+                      <input type="text" name="level" class="form-control" placeholder="isi level" required>
+                  </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  </form>
                 </div>
-                <div class="form-group">
-                  <label>Alamat</label>
-                  <input type="textarea" name="alamat" class="form-control" placeholder="isi alamat" required>
-                </div>
-                <div class="form-group">
-                <label>Jabatan</label>
-                  <input type="text" name="jabatan" class="form-control" placeholder="isi jabatan" required>
-                </div>
-                <div class="form-group ">
-                    <label>Username</label>
-                  <input type="text" name="username" class="form-control" placeholder="isi username" required>
-                </div>
-                <div class="form-group ">
-                    <label>Password</label>
-                  <input type="text" name="password" class="form-control" placeholder="isi password" required>
-                </div>
-                <div class="form-group ">
-                    <label>Level</label>
-                  <input type="text" name="level" class="form-control" placeholder="isi level" required>
-                </div>
-                    <tr>
-                      <td></td>
-                      <td><input type="submit" value="SIMPAN"></td>
-                    </tr>		
-                    </form>
-                </div>
+              </div>
             </div>
+
         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <?php
+            include('../../template/footer.php')
+        ?>
+        <!-- partial -->
     </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
 </div>
+<!-- container-scroller -->
+
+
+<?php
+    include('../../template/js.php')
+?>
+
+</body>
+
 </html>

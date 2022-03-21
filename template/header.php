@@ -15,7 +15,7 @@
           <div class="dropdown-header text-center">
             <strong>Pengaturan Akun</strong>
           </div>
-          <a class="dropdown-item" href="logout.php">
+          <a class="dropdown-item" href="../auth/logout.php">
             <i class="fa fa-lock"></i> Logout</a>
         </div>
       </li>

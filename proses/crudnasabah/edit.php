@@ -30,65 +30,14 @@ $data= mysqli_fetch_array($query);
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-<header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="fa fa-user-circle" style="font-size: 35px;"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <div class="dropdown-header text-center">
-            <strong>Pengaturan Akun</strong>
-          </div>
-         
-          <a class="dropdown-item" href="logout.php">
-            <i class="fa fa-lock"></i> Logout</a>
-        </div>
-      </li>
-    </ul>
-  </header>
+<?php
+    include "../../template/header.php";
+?>
 
-<div class="app-body">
-    <div class="sidebar">
-      <nav class="sidebar-nav">
-        <ul class="nav">
-          <li class="nav-title">Menu</li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">
-              <i class="nav-icon icon-speedometer"></i> Dashboard</a>
-          </li>
-         
-                <a class="nav-link" href="user.php">
-                  <i class="nav-icon icon-user"></i>Data Nasabah</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pegawai.php">
-                  <i class="nav-icon fa fa-users"></i>Data Admin</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="rekening.php">
-                  <i class="nav-icon icon-settings"></i>Rekening</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="transaksi.php">
-                  <i class="nav-icon fa fa-dropbox"></i>Setoran</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="ambil.php">
-                  <i class="nav-icon icon-doc"></i>Penarikan</a>
-              </li>
-        
-        </ul>
-      </nav>
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+  <div class="app-body">
+<?php
+  include "../../template/sidebar_crud.php";
+?>
 
 <body>
  	

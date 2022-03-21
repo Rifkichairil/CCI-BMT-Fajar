@@ -9,104 +9,100 @@ $data= mysqli_fetch_array($query);
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-<title>BMT FAJAR</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-  <meta name="author" content="Lukasz Holeczek">
-  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  
-  <!-- Icons-->
-  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
-  <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
-  <link href="../../css/style.min.css" rel="stylesheet">
-  <link href="../../css/costum.css" rel="stylesheet">
-  <link href="../../css/pace.min.css" rel="stylesheet">
 
-</head>
-
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <?php
-    include "../../template/header.php";
+    include('../../template/head.php')
 ?>
-<div class="app-body">
-<?php
-    include "../../template/sidebar_crud.php";
-?>
+<body>
+    <div class="container-scroller">
+    <?php
+        include('../../template/navbar.php')
+    ?>
 
-    <body>
- 	
-   <div class ="pull-right">
-                   <a href="transaksi.php" class="btn btn-warning btn-xs"></a>
-                   </div>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php
+        include('../../template/sidebar_crud.php')
+    ?>
 
-       <div class="container-fluid">
-       <h2 align="center" class="pt-3 pb-3">Edit Transaksi</h2>
-       <div class="row justify-content-center">
-           <div class="col-sm-6 col-lg-5 ">
-               <div class="card">
-                   <div class="card-body">
-                   <div class="hitung">
-                   <form method="post" action="proses_edittransaksi.php">
-                       <div class="form-group ">
-        <label>Id Pegawai</label>
-		    <input type="text" name="admin_id" class="form-control" value="<?php echo $data["admin_id"] ?>">
-        </div>
-        <div class="form-group ">
-        <label>Id Nasabah</label>
-		    <input type="text" name="id" class="form-control" value="<?php echo $data["id"] ?>">
-        </div>
-        <div class="form-group">
-				<label>Nomor Rekening</label>
-				<input type="text" name="rek" class="form-control" value="<?php echo $data["rekening  "] ?>"> 
-                </div>
-         <div class="form-group">
-				<label>Tanggal</label>
-                <input type="date" name="tanggal" class="form-control" value="<?php echo $data["tanggal"] ?>"
-                </div>
-            <div class="form-group">
-				<label>Jumlah</label>
-                <input type="text" name="jumlah" id="jumlah" class="form-control" value="<?php echo $data["jumlah"] ?>"
-</div>
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Edit Transaksi</h4>
+                <form class="forms-sample" action="proses_edittransaksi.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $data["id"] ?>" >
 
-            <div class="form-group">
-				<label>Saldo Awal</label>
-                <input type="text" name="awal" id="awal" class="form-control" value="<?php echo $data["awal"] ?>"
-</div>
+                    <div class="form-group">
+                    <label for="admin_id">Id Pegawai</label>
+                    <input type="text" class="form-control" id="admin_id" name="admin_id" value="<?php echo $data["admin_id"] ?>"  readonly >
+                    </div>
+                    <div class="form-group">
+                    <label for="id">Id Nasabah</label>
+                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $data["id"] ?>"  readonly >
+                    </div>
 
-<div class="form-group">
-				<label>Saldo Akhir</label>
-                <input type="text" name="akhir" id="akhir" class="form-control" value="<?php echo $data["akhir"] ?>"
-</div>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="SIMPAN"></td>
-        </tr>		
+                    <div class="form-group">
+                    <label for="rek">Nomor Rekening</label>
+                    <input type="text" class="form-control" id="rek" name="rek" value="<?php echo $data["rekening"] ?>" readonly >
+                    </div>
+                    <div class="form-group">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?php echo $data["tanggal"] ?>" readonly >
+                    </div>
+                    
+                    <div class="rm-group">
+                        <label>Jumlah Setoran</label>
+                        <input type="text" name="jumlah" id="jumlah" class="form-control" placeholder="isi jumlah" value="<?php echo $data["jumlah"] ?>">
+                    </div> 
+                    <div class="form-group">
+                        <label>Setoran Awal</label>
+                        <input type="text" name="awal" id="awal" class="form-control hitung" placeholder="isi saldo awal" value="<?php echo $data["awal"] ?>">
+                    </div>
+                    <div class="form-group ">
+                        <label>Saldo Akhir</label>
+                        <input type="text" name="akhir" id="akhir" class="form-control" placeholder="isi saldo akhir" value="<?php echo $data["akhir"] ?>" readonly>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </form>
                 </div>
             </div>
+            </div>
+
         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <?php
+            include('../../template/footer.php')
+        ?>
+        <!-- partial -->
     </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
- <script type="text/javascript">
- 
-  $(".hitung").keyup(function(){
-    var jumlah= parseInt($("#jumlah").val())
+<!-- container-scroller -->
+
+
+<?php
+    include('../../template/js.php')
+?>
+
+<script type="text/javascript">
+    $(".hitung").keyup(function(){
     var awal= parseInt($("#awal").val())
     var akhir= parseInt($("#akhir").val())
- 
-    var gettotal=jumlah + awal;
- 
-    $("#akhir").attr("value",gettotal)
-  
-  });
-  </script>
+    var gettotal=awal;
 
-  </body>
+    $("#akhir").attr("value",gettotal)
+});
+</script>
+
+</body>
+
 </html>

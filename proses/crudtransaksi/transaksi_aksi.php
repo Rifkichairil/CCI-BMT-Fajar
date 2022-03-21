@@ -4,7 +4,6 @@
     
     // menangkap data yang di kirim dari form
     $admin_id   = $_POST['admin_id'];
-    $id         = $_POST['id'];
     $rek        = $_POST['rek'];
     $tanggal    = $_POST['tanggal'];
     $jumlah     = $_POST['jumlah'];
@@ -12,7 +11,7 @@
     $akhir      = $_POST['akhir'];
 
     // menginput data ke database
-    $query="INSERT INTO transaksi SET admin_id='$admin_id', id='$id', rekening='$rek', tanggal='$tanggal', jumlah='$jumlah', awal='$awal', akhir='$akhir'";
+    $query="INSERT INTO transaksi SET admin_id='$admin_id',  rekening='$rek', tanggal='$tanggal', jumlah='$jumlah', awal='$awal', akhir='$akhir'";
     mysqli_query($koneksi, $query);
     
     // mengalihkan halaman kembali ke transaksi.php

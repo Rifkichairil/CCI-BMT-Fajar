@@ -15,122 +15,121 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
 //Jika Bukan Admin tidak bisa Lanjut
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-<title>BMT FAJAR</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-  <meta name="author" content="Lukasz Holeczek">
-  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  
-  <!-- Icons-->
-  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
-  <!-- Main styles for this application-->
-  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
-  <link href="../../css/style.min.css" rel="stylesheet">
-  <link href="../../css/costum.css" rel="stylesheet">
-  <link href="../../css/pace.min.css" rel="stylesheet">
 
-</head>
-
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <?php
-    include "../../template/header.php";
+    include('../../template/head.php')
 ?>
+<body>
+    <div class="container-scroller">
+    <?php
+        include('../../template/navbar.php')
+    ?>
 
-<div class="app-body">
-<?php
-    include "../../template/sidebar_crud.php";
-?>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php
+        include('../../template/sidebar_crud.php')
+    ?>
 
-                <div class ="pull-right">
-                <a href="rekening.php" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-chevron-left"></i>Kembali</a>
-                </div>
-
-               <div class="container-fluid">
-    <h2 align="center" class="pt-3 pb-3">Tambah Rekening</h2>
-    <div class="row justify-content-center">
-        <div class="col-sm-6 col-lg-5 ">
-            <div class="card">
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            
+        <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
-                <div class="hitung">
-                <form method="post" action="../crudrekening/rekening_aksi.php">
-                    <div class="form-group ">
-                  <label>Nasabah</label>
-                  <select name="nasabah_id" id="nasabah_id" class="form-control" onchange="changeValue(this.value)" required >  
-                           <option value="">Pilih..</option>
-						   <?php
-						   include "../koneksi/koneksi.php";  
-                          $query = mysqli_query($koneksi, "select * from nasabah");  
-                          $result = mysqli_query($koneksi, "select * from nasabah");  
-                          
-                          $b          = "nama= new Array();\n;"; 
+                  <h4 class="card-title">Tambah Nasabah</h4>
+                  <form class="forms-sample" action="../crudrekening/rekening_aksi.php" method="POST">
+                    <div class="form-group">
+                      <label for="nasabah">Nasabah</label>
+                      <select class="form-control form-control-lg" id="nasabah_id" name="nasabah_id" onchange="changeValue(this.value)" required>
+                        <option value="">- Pilih -</option>
+                        <?php 
+                          include "../koneksi/koneksi.php";  
+                            $query = mysqli_query($koneksi, "select * from nasabah");  
+                            $result = mysqli_query($koneksi, "select * from nasabah");  
+                            $b          = "nama= new Array();\n;"; 
                           while ($d = mysqli_fetch_array($result)) {  
-                               echo '<option name="id" value="'.$d['id'] . '">' . $d['id'] . '</option>';   
-                          $b .= "nama['" . $d['id'] . "'] = {nama:'" . addslashes($d['nama'])."'};\n"; 
-					
+                              echo '<option name="id" value="'.$d['id'] . '">' . $d['id'] . '</option>';   
+                              $b .= "nama['" . $d['id'] . "'] = {nama:'" . addslashes($d['nama'])."'};\n"; 
                           }  
-                          ?> 
-	             </select>
-                </div>
-                <div class="form-group">
-                  <label>Nama</label>
-                  <input type="text" name="nama" id="nama" class="form-control" placeholder="nama nasabah" required>
-                </div>
-                <div class="form-group">
-                  <label>Nomor Rekening</label>
-                  <input type="text" name="rek" class="form-control" placeholder="nomor rekening" required >
-                </div>
-                  <div class="form-group">
-                  <label>Tanggal Buka</label>
-                  <input type="date" name="tgl_buka" class="form-control" placeholder="tanggal" required>
-                </div>  
-                <div class="form-group">
-                  <label>Saldo</label>
-                  <input type="text" name="awal" id="awal" class="form-control" placeholder="Saldo Awal" required>
-                </div>
-                <div class="form-group">
-                  <label>Saldo Akhir</label>
-                  <input type="text" name="akhir" id="akhir" class="form-control" placeholder="Saldo Akhir" required>
-                </div>
-                    <tr>
-                      <td></td>
-                      <td><input type="submit" value="SIMPAN"></td>
-                    </tr>	
+                        ?>
+                      </select>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label for="nama">Nama</label>
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="masukan nama" required readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="rek">Nomor Rekening</label>
+                      <input type="text" class="form-control" id="rek" name="rek" placeholder="masukan rek" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="tgl_buka">Tanggal Buka</label>
+                      <input type="date" class="form-control" id="tgl_buka" name="tgl_buka" placeholder="masukan tgl_buka" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="awal">Saldo Awal</label>
+                      <input type="text" class="form-control hitung" id="awal" name="awal" placeholder="masukan saldo awal" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="akhir">Saldo Akhir</label>
+                      <input type="text" class="form-control" id="akhir" name="akhir" placeholder="masukan saldo akhir" required readonly>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
                     <script type="text/javascript">   
                           <?php   
-                          
-                          echo $b;
-						                ?>  
+                            echo $b;
+                          ?>  
                           function changeValue(id){     
-						
-              document.getElementById('nama').value = nama[id].nama;   
-				 
+                          document.getElementById('nama').value = nama[id].nama;   
                           };  
-                  </script>		
-                </form>
+                  </script>	
+                  </form>
                 </div>
+              </div>
             </div>
+
         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <?php
+            include('../../template/footer.php')
+        ?>
+        <!-- partial -->
     </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
- <script type="text/javascript">
- 
-  $(".hitung").keyup(function(){
-    var awal= parseInt($("#awal").val())
-    var akhir= parseInt($("#akhir").val())
- 
-    var gettotal=awal;
- 
-    $("#akhir").attr("value",gettotal)
+<!-- container-scroller -->
+
+
+<?php
+    include('../../template/js.php')
+?>
+
+<script type="text/javascript">
+    $(".hitung").keyup(function(){
+      var awal= parseInt($("#awal").val())
+      var akhir= parseInt($("#akhir").val())
+      var gettotal=awal;
   
+      $("#akhir").attr("value",gettotal)
   });
-  </script>
+</script>
+
+</body>
+
 </html>

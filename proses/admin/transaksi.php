@@ -1,5 +1,5 @@
 <?php
-include('koneksi.php');
+include('../koneksi/koneksi.php');
 ?>
 <?php
 session_start();
@@ -103,42 +103,42 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
     <h2 align="center" class="pt-3 pb-3">Setoran Nasabah</h2>
     <div class="row justify-content-center">
         <div class="col-sm-6 col-lg-6 ">
-            <a href="tambahtransaksi.php" class="btn btn-primary mb-2">Tambah data</a>
+            <a href="../crudtransaksi/tambahtransaksi.php" class="btn btn-primary mb-2">Tambah data</a>
             <a href="eksport.php" class="btn btn-success mb-2">Export Data</a>
             <table class="table table-striped table-hover table-bordered" id="data">
                 <thead>
                     <tr align="center">
-                    <th>No</th>
-       <th>Id Pegawai</th>
-       <th>Id Nasabah</th>
-			<th>Nomor Rekening</th>
-			<th>Tanggal</th>
-			<th>Jumlah</th>
-            <th>Setoran Awal</th>
-            <th>Saldo Akhir</th>
-			<th>OPSI</th>
-      </tr>
+                      <th>No</th>
+                      <th>Id Pegawai</th>
+                      <th>Id Nasabah</th>
+                      <th>Nomor Rekening</th>
+                      <th>Tanggal</th>
+                      <th>Jumlah</th>
+                      <th>Setoran Awal</th>
+                      <th>Saldo Akhir</th>
+                      <th>OPSI</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <?php 
-		include 'koneksicrud.php';
+		include '../koneksi/koneksicrud.php';
 		$no = 1;
-		$data = mysqli_query($koneksi,"select * from tb_transaksi");
+		$data = mysqli_query($koneksi,"select * from transaksi");
 		while($d = mysqli_fetch_array($data)){
 			?>
 		 <tr align="center">
 				<td><?php echo $no++; ?></td>
-				<td><?php echo $d['id_pegawai']; ?></td>
+				<td><?php echo $d['admin_id']; ?></td>
 				<td><?php echo $d['id']; ?></td>
-                <td><?php echo $d['rek']; ?></td>
+        <td><?php echo $d['rekening']; ?></td>
 				<td><?php echo $d['tanggal']; ?></td>
 				<td><?php echo $d['jumlah']; ?></td>
-                <td><?php echo $d['awal']; ?></td>
-                <td><?php echo $d['akhir']; ?></td>
+        <td><?php echo $d['awal']; ?></td>
+        <td><?php echo $d['akhir']; ?></td>
 				<td>		
         <div class="btn-group">		
-					<a href="edit_transaksi.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
-            	<a href="delete_transaksi.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
+					    <a href="../crudtransaksi/edit_transaksi.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
+            	<a href="../crudtransaksi/delete_transaksi.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
               </td>
 			</tr>
                 <?php } ?>

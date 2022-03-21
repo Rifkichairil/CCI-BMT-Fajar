@@ -1,16 +1,16 @@
 <?php
-include('koneksi.php');
+include('../koneksi/koneksi.php');
 ?>
 <?php
 session_start();
 // cek apakah user sudah login
 if(!isset($_SESSION['login'])){
-	header ("location :login.php");                       
+	header ("location :../auth/login.php");                       
 } 
 // cek user
 if(($_SESSION['level']!="admin")){
 die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
-    window.location = 'halaman_admin.php'</script>'");
+    window.location = '../admin/halaman_admin.php'</script>'");
 //Jika Bukan Admin tidak bisa Lanjut
 }
 ?>
@@ -103,43 +103,43 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
     <h2 align="center" class="pt-3 pb-3">Transaksi Penarikan Tabungan Nasabah</h2>
     <div class="row justify-content-center">
         <div class="col-sm-6 col-lg-6 ">
-            <a href="tambahambil.php" class="btn btn-primary mb-2">Tambah data</a>
-            <a href="eksportambil.php" class="btn btn-success mb-2">Export Data</a>
+            <a href="../crudpenarikan/tambahambil.php" class="btn btn-primary mb-2">Tambah data</a>
+            <a href="../crudpenarikan/eksportambil.php" class="btn btn-success mb-2">Export Data</a>
             <table class="table table-striped table-hover table-bordered" id="data">
                 <thead>
                     <tr align="center">
-       <th>No</th>
-       <th>Id Pegawai</th>
-       <th>Id Nasabah</th>
-			<th>Nomor Rekening</th>
-			<th>Tanggal</th>
-			<th>Jumlah</th>
-            <th>Saldo Awal</th>
-            <th>Saldo Akhir</th>
-			<th>OPSI</th>
-      </tr>
+                        <th>No</th>
+                        <th>Id Pegawai</th>
+                        <th>Id Rekening Nasabah</th>
+                        <th>Nomor Rekening</th>
+                        <th>Tanggal</th>
+                        <th>Jumlah</th>
+                        <th>Saldo Awal</th>
+                        <th>Saldo Akhir</th>
+                        <th>OPSI</th>
+                  </tr>
                 </thead>
                 <tbody>
                 <?php 
-		include 'koneksicrud.php';
+		include '../koneksi/koneksicrud.php';
 		$no = 1;
-		$data = mysqli_query($koneksi,"select * from tb_ambil");
+		$data = mysqli_query($koneksi,"select * from penarikan");
 		while($d = mysqli_fetch_array($data)){
 			?>
 		 <tr align="center">
-				<td><?php echo $no++; ?></td>
-				<td><?php echo $d['id_pegawai']; ?></td>
-				<td><?php echo $d['id']; ?></td>
-                <td><?php echo $d['rek']; ?></td>
-				<td><?php echo $d['tanggal']; ?></td>
-				<td><?php echo $d['jumlah']; ?></td>
-                <td><?php echo $d['awal']; ?></td>
-                <td><?php echo $d['akhir']; ?></td>
-				<td>		
-        <div class="btn-group">		
-					<a href="edit_ambil.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
-            	<a href="delete_ambil.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
-              </td>
+          <td><?php echo $no++; ?></td>
+          <td><?php echo $d['admin_id']; ?></td>
+          <td><?php echo $d['rekening_id']; ?></td>
+          <td><?php echo $d['rekening']; ?></td>
+          <td><?php echo $d['tanggal']; ?></td>
+          <td><?php echo $d['jumlah']; ?></td>
+          <td><?php echo $d['awal']; ?></td>
+          <td><?php echo $d['akhir']; ?></td>
+          <td>		
+            <div class="btn-group">		
+              <a href="../crudpenarikan/edit_ambil.php?&id=<?php echo $d['id']; ?>"class="btn btn-info">EDIT</a>
+              <a href="../crudpenarikan/delete_ambil.php?&id=<?php echo $d['id']; ?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')" class="btn btn-warning">HAPUS</a>
+          </td>
 			</tr>
                 <?php } ?>
    

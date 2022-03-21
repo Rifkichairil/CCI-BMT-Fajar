@@ -1,5 +1,5 @@
 <?php
-include('koneksi.php');
+include('../koneksi/koneksi.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +15,14 @@ include('koneksi.php');
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
   
   <!-- Icons-->
-  <link href="vendors/css/flag-icon.min.css" rel="stylesheet">
-  <link href="vendors/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendors/css/simple-line-icons.css" rel="stylesheet">
+  <link href="../../vendors/css/flag-icon.min.css" rel="stylesheet">
+  <link href="../../vendors/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../vendors/css/simple-line-icons.css" rel="stylesheet">
   <!-- Main styles for this application-->
-  <link rel="stylesheet" href="css/datatables.min.css"> <!--Data Tables-->
-  <link href="css/style.min.css" rel="stylesheet">
-  <link href="css/costum.css" rel="stylesheet">
-  <link href="css/pace.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/datatables.min.css"> <!--Data Tables-->
+  <link href="../../css/style.min.css" rel="stylesheet">
+  <link href="../../css/costum.css" rel="stylesheet">
+  <link href="../../css/pace.min.css" rel="stylesheet">
 
 </head>
 
@@ -98,19 +98,19 @@ include('koneksi.php');
             <div class="card">
                 <div class="card-body">
                 <div class="hitung">
-                <form method="post" action="transaksi_aksi.php">
+                <form method="post" action="../crudtransaksi/transaksi_aksi.php">
                 <div class="form-group ">
                     <label>Id Pegawai</label>
-                  <input type="text" name="id_pegawai" class="form-control" placeholder="isi id pegawai" required>
+                  <input type="text" name="admin_id" class="form-control" placeholder="isi id pegawai" value="" required>
                 </div>
                     <div class="form-group ">
                     <label>Id Nasabah</label>
                     <select name="id" id="id" class="form-control" onchange="changeValue(this.value)" required >  
                            <option value="">Pilih..</option>
 						   <?php
-						   include "koneksi.php";  
-                          $query = mysqli_query($koneksi, "select * from tb_rek");  
-                          $result = mysqli_query($koneksi, "select * from tb_rek");  
+						   include "../koneksi/koneksi.php";  
+                          $query = mysqli_query($koneksi, "select * from rekening");  
+                          $result = mysqli_query($koneksi, "select * from rekening");  
                           
                           $b          = "rek= new Array();\n;"; 
                           while ($d = mysqli_fetch_array($result)) {  
@@ -120,10 +120,11 @@ include('koneksi.php');
                           }  
                           ?> 
 	             </select>
+               
                 </div>
                     <div class="form-group">
                   <label>Nomor Rekening</label>
-                  <input type="text" name="rek" id="rek" class="form-control" placeholder="isi rekening" required>
+                  <input type="text" name="rek" id="rek" class="form-control" placeholder="isi rekening" required readonly>
                 </div>
                 <div class="rm-group">
                   <label>Tanggal</label>

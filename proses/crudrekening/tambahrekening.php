@@ -138,7 +138,7 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                 </div>
                 <div class="form-group">
                   <label>Nomor Rekening</label>
-                  <input type="text" name="rek" class="form-control" placeholder="nomor rekening" required>
+                  <input type="text" name="rek" class="form-control" placeholder="nomor rekening" required >
                 </div>
                   <div class="form-group">
                   <label>Tanggal Buka</label>

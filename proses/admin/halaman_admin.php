@@ -1,17 +1,17 @@
     <?php
     include "../koneksi/koneksicrud.php";
-    // $query = mysqli_query($koneksi, "select count(id) as jumlah from tb_nasabah");
-    // $query1 = mysqli_query($koneksi, "select count(id_pegawai) as jumlah from tb_pegawai");
-    // $query2 = mysqli_query($koneksi, "select count(id) as jumlah from tb_transaksi");
-    // $query3 = mysqli_query($koneksi, "select count(id) as jumlah from tb_ambil");
-    // $data= mysqli_fetch_array($query);
-    // $dataadm= mysqli_fetch_array($query1);
-    // $datatr= mysqli_fetch_array($query2);
-    // $dataamb= mysqli_fetch_array($query3);
-    // $jumlahnasabah = $data['jumlah']; 
-    // $jumlahadmin = $dataadm['jumlah'];
-    // $jumlahsetor = $datatr['jumlah'];
-    // $jumlahambil = $dataamb['jumlah'];  
+    $query = mysqli_query($koneksi, "select count(id) as jumlah from nasabah");
+    $query1 = mysqli_query($koneksi, "select count(id) as jumlah from admin");
+    $query2 = mysqli_query($koneksi, "select count(id) as jumlah from transaksi");
+    $query3 = mysqli_query($koneksi, "select count(id) as jumlah from penarikan");
+    $data= mysqli_fetch_array($query);
+    $dataadm= mysqli_fetch_array($query1);
+    $datatr= mysqli_fetch_array($query2);
+    $dataamb= mysqli_fetch_array($query3);
+    $jumlahnasabah = $data['jumlah']; 
+    $jumlahadmin = $dataadm['jumlah'];
+    $jumlahsetor = $datatr['jumlah'];
+    $jumlahambil = $dataamb['jumlah'];  
     ?>
 
 
@@ -48,8 +48,7 @@
                 <div class="card card-tale">
                     <div class="card-body">
                     <p class="mb-4">Jumlah Nasabah</p>
-                    <p class="fs-30 mb-2">4006</p>
-                    <p>10.00% (30 days)</p>
+                    <p class="fs-30 mb-2"><?= $jumlahnasabah?></p>
                     </div>
                 </div>
                 </div>
@@ -57,8 +56,7 @@
                 <div class="card card-dark-blue">
                     <div class="card-body">
                     <p class="mb-4">Jumlah Admin</p>
-                    <p class="fs-30 mb-2">61344</p>
-                    <p>22.00% (30 days)</p>
+                    <p class="fs-30 mb-2"><?= $jumlahadmin?></p>
                     </div>
                 </div>
                 </div>
@@ -66,8 +64,7 @@
                 <div class="card card-dark-blue">
                     <div class="card-body">
                     <p class="mb-4">Jumlah Setoran</p>
-                    <p class="fs-30 mb-2">61344</p>
-                    <p>22.00% (30 days)</p>
+                    <p class="fs-30 mb-2"><?= $jumlahsetor?></p>
                     </div>
                 </div>
                 </div>
@@ -75,8 +72,7 @@
                 <div class="card card-dark-blue">
                     <div class="card-body">
                     <p class="mb-4">Jumlah Penarikan</p>
-                    <p class="fs-30 mb-2">61344</p>
-                    <p>22.00% (30 days)</p>
+                    <p class="fs-30 mb-2"><?= $jumlahambil?></p>
                     </div>
                 </div>
                 </div>

@@ -2,7 +2,7 @@
 $server = 'localhost';
 $username = 'root'; //default mysql
 $password = ''; //default mysql
-$database = 'db_anggi'; //nama database yang akan diakses
+$database = 'db_bmt'; //nama database yang akan diakses
 $peringatan = 'DATABASE TIDAK BISA DIBUKA!';
 
 $koneksi = mysqli_connect($server,$username,$password,$database);

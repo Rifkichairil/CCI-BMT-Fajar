@@ -2,7 +2,7 @@
 $server = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'db_anggi';
+$database = 'db_bmt';
 
 //koneksi dan memilih database di server
 $koneksi = mysqli_connect($server,$username,$password) or die ("KONEKSI GAGAL!");

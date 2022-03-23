@@ -2,9 +2,9 @@
 <?php 
     include '../koneksi/koneksicrud.php';
     $id = $_GET['id'];
-    // $sql = "SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id where id = '$id'";
-    $query = mysqli_query($koneksi, "select * from rekening where id ='$id'");
-    // $query = mysqli_query($koneksi, $sql);
+    $sql = "SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id_nasabah where id_rekening = '$id'";
+    // $query = mysqli_query($koneksi, "select * from rekening where id_rekening ='$id'");
+    $query = mysqli_query($koneksi, $sql);
     $data= mysqli_fetch_array($query);
 ?>
 
@@ -38,39 +38,37 @@
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">
-                    <?php echo var_dump($data)?>
+                    <!-- <?php echo var_dump($query)?> -->
                 </h4>
                 <h4 class="card-title">Edit Rekening</h4>
                 <form class="forms-sample" action="../crudrekening/proses_editrekening.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $data["id"] ?>" >
+                <input type="hidden" name="id_rekening" value="<?php echo $data["id_rekening"] ?>" >
+                <input type="hidden" name="nasabah_id" value="<?php echo $data["nasabah_id"] ?>" >
 
+                    <!-- <div class="form-group">
+                        <label for="nasabah_id">Id Nasabah</label>
+                        <input type="text" class="form-control" id="nasabah_id" name="nasabah_id" value="<?php echo $data["nasabah_id"] ?>"  readonly >
+                    </div> -->
                     <div class="form-group">
-                    <label for="nasabah_id">Id Nasabah</label>
-                    <input type="text" class="form-control" id="nasabah_id" name="nasabah_id" value="<?php echo $data["nasabah_id"] ?>"  readonly >
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $data["nama"] ?>" readonly >
                     </div>
                     <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $data["nama"] ?>" readonly >
-                    </div>
-                    
-                    <div class="form-group">
-                    <label for="rek">Nomor Rekening</label>
-                    <input type="text" class="form-control" id="rek" name="rek" placeholder="masukan rek" value="<?php echo $data["rek"] ?>">
+                        <label for="rek">Nomor Rekening</label>
+                        <input type="text" class="form-control" id="rek" name="rek" placeholder="masukan rek" value="<?php echo $data["rek"] ?>">
                     </div>
                     <div class="form-group">
-                    <label for="tgl_buka">Tanggal Buka</label>
-                    <input type="date" class="form-control" id="tgl_buka" name="tgl_buka" placeholder="masukan tgl_buka" value="<?php echo $data["tgl_buka"] ?>">
-                    </div>
-                    
-                    <div class="form-group">
-                    <label for="awal">Saldo Awal</label>
-                    <input type="text" class="form-control hitung" id="awal" name="awal" placeholder="masukan saldo awal" value="<?php echo $data["awal"] ?>">
+                        <label for="tgl_buka">Tanggal Buka</label>
+                        <input type="date" class="form-control" id="tgl_buka" name="tgl_buka" placeholder="masukan tgl_buka" value="<?php echo $data["tgl_buka"] ?>">
                     </div>
                     <div class="form-group">
-                    <label for="akhir">Saldo Akhir</label>
-                    <input type="text" class="form-control" id="akhir" name="akhir" placeholder="masukan saldo akhir" value="<?php echo $data["akhir"] ?>" readonly>
+                        <label for="awal">Saldo Awal</label>
+                        <input type="text" class="form-control hitung" id="awal" name="awal" placeholder="masukan saldo awal" value="<?php echo $data["awal"] ?>">
                     </div>
-
+                    <div class="form-group">
+                        <label for="akhir">Saldo Akhir</label>
+                        <input type="text" class="form-control" id="akhir" name="akhir" placeholder="masukan saldo akhir" value="<?php echo $data["akhir"] ?>" readonly>
+                    </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </form>

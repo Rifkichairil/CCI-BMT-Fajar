@@ -39,8 +39,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>ID</th>
-                                <th>Id Nasabah</th>
+                                <th>ID Rekening</th>
+                                <th>ID Nasabah</th>
                                 <th>Nama</th>
                                 <th>Nomor Rekening</th>
                                 <th>Tanggal Buka</th>
@@ -53,14 +53,14 @@
                         <?php 
                             include '../koneksi/koneksicrud.php';
                             $no = 1;
-                            $sql = 'SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id';
+                            $sql = 'SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id_nasabah';
                             $data = mysqli_query($koneksi,$sql);
                             while($d = mysqli_fetch_array($data)){
                         ?>
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['nasabah_id']; ?></td>
+                                <td><?php echo $d['id_rekening']; ?></td>
                                 <td><?php echo $d['nasabah_id']; ?></td>
                                 <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['rek']; ?></td>
@@ -68,8 +68,8 @@
                                 <td><?php echo $d['awal']; ?></td>
                                 <td><?php echo $d['akhir']; ?></td>
                                 <td>
-                                    <a href="../crudrekening/edit_rekening.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
-                                    <a href="../crudrekening/delete_rekening.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
+                                    <a href="../crudrekening/edit_rekening.php?&id=<?php echo $d['id_rekening']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
+                                    <a href="../crudrekening/delete_rekening.php?&id=<?php echo $d['id_rekening']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
                                 </td>
                             </tr>
                 

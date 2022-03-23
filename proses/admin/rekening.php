@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="d-flex justify-content-end">
-                        <a href="../crudrekening/tambahrekening.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Nasabah</a>
+                        <a href="../crudrekening/tambahrekening.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Rekening</a>
                         <div class="p-1"></div>
                         <a href="../crudrekening/cetak.php" class="btn btn-sm btn-success btn-rounded btn-fw">Cetak</a>
                     </div>
@@ -37,8 +37,9 @@
                     <div class="table-responsive">
                         <table class="table" id="data">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>No</th>
+                                <th>ID</th>
                                 <th>Id Nasabah</th>
                                 <th>Nama</th>
                                 <th>Nomor Rekening</th>
@@ -52,12 +53,14 @@
                         <?php 
                             include '../koneksi/koneksicrud.php';
                             $no = 1;
-                            $data = mysqli_query($koneksi,"select * from rekening");
+                            $sql = 'SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id';
+                            $data = mysqli_query($koneksi,$sql);
                             while($d = mysqli_fetch_array($data)){
                         ?>
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
+                                <td><?php echo $d['nasabah_id']; ?></td>
                                 <td><?php echo $d['nasabah_id']; ?></td>
                                 <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['rek']; ?></td>

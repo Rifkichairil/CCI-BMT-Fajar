@@ -49,6 +49,7 @@
                     <div class="card-body">
                     <p class="mb-4">Jumlah Nasabah</p>
                     <p class="fs-30 mb-2"><?= $jumlahnasabah?></p>
+                    <p>Nasabah</p>
                     </div>
                 </div>
                 </div>
@@ -57,6 +58,7 @@
                     <div class="card-body">
                     <p class="mb-4">Jumlah Admin</p>
                     <p class="fs-30 mb-2"><?= $jumlahadmin?></p>
+                    <p>Admin</p>
                     </div>
                 </div>
                 </div>
@@ -65,6 +67,7 @@
                     <div class="card-body">
                     <p class="mb-4">Jumlah Setoran</p>
                     <p class="fs-30 mb-2"><?= $jumlahsetor?></p>
+                    <p>Transaksi</p>
                     </div>
                 </div>
                 </div>
@@ -73,6 +76,7 @@
                     <div class="card-body">
                     <p class="mb-4">Jumlah Penarikan</p>
                     <p class="fs-30 mb-2"><?= $jumlahambil?></p>
+                    <p>Transaksi</p>
                     </div>
                 </div>
                 </div>

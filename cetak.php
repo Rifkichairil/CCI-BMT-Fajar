@@ -9,7 +9,7 @@ include('proses/koneksi/koneksi.php');
                 <thead>
                     <tr align="center">
                     <th>No</th>
-                    <th>Id Nasabah</th>
+                    <!-- <th>Id Nasabah</th> -->
 			        <th>Nama</th>
                      <th>Alamat</th>
                     <th>Nomor KTP/SIM</th>
@@ -28,7 +28,7 @@ include('proses/koneksi/koneksi.php');
              
              <tr align="center">
 				<td><?php echo $no++; ?></td> 
-				<td><?php echo $d['id']; ?></td>
+				<!-- <td><?php echo $d['id_nasabah']; ?></td> -->
 				<td><?php echo $d['nama']; ?></td>
                 <td><?php echo $d['alamat']; ?></td>
                 <td><?php echo $d['ktp']; ?></td>

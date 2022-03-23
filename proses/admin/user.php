@@ -37,9 +37,9 @@
                     <div class="table-responsive">
                         <table class="table" id="data">
                         <thead>
-                            <tr>
+                            <tr class="text-center"> 
                                 <th>No</th>
-                                <th>Id Nasabah</th>
+                                <!-- <th>Id Nasabah</th> -->
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>Nomor KTP/SIM</th>
@@ -58,15 +58,15 @@
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td> 
-                                <td><?php echo $d['id']; ?></td>
+                                <!-- <td><?php echo $d['id_nasabah']; ?></td> -->
                                 <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['alamat']; ?></td>
                                 <td><?php echo $d['ktp']; ?></td>
                                 <td><?php echo $d['gender']; ?></td>
                                 <td><?php echo $d['telp']; ?></td>
                                 <td>
-                                    <a href="../crudnasabah/edit.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
-                                    <a href="../crudnasabah/delete.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
+                                    <a href="../crudnasabah/edit.php?&id=<?php echo $d['id_nasabah']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
+                                    <a href="../crudnasabah/delete.php?&id=<?php echo $d['id_nasabah']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
                                 </td>
                             </tr>
                 

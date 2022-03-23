@@ -7,7 +7,7 @@
 
     
     // menghapus data dari database
-    mysqli_query($koneksi, "delete from nasabah where id='$id'");
+    mysqli_query($koneksi, "delete from nasabah where id_nasabah='$id'");
     
     // mengalihkan halaman kembali ke index.php
     header("location:../admin/user.php");

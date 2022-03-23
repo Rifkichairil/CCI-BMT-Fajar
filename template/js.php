@@ -1,6 +1,7 @@
 
     <!-- plugins:js -->
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
@@ -21,5 +22,6 @@
     <!-- Custom js for this page-->
     <script src="../../assets/js/dashboard.js"></script>
     <script src="../../assets/js/Chart.roundedBarCharts.js"></script>
+    <script src="../../assets/js/select2.js"></script>
     <!-- End custom js for this page-->
     <!-- endinject -->

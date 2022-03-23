@@ -1,9 +1,11 @@
 
 <?php 
-include '../koneksi/koneksicrud.php';
-$id = $_GET['id'];
-$query = mysqli_query($koneksi, "select * from rekening where id ='$id'");
-$data= mysqli_fetch_array($query);
+    include '../koneksi/koneksicrud.php';
+    $id = $_GET['id'];
+    // $sql = "SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id where id = '$id'";
+    $query = mysqli_query($koneksi, "select * from rekening where id ='$id'");
+    // $query = mysqli_query($koneksi, $sql);
+    $data= mysqli_fetch_array($query);
 ?>
 
 
@@ -35,6 +37,9 @@ $data= mysqli_fetch_array($query);
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                <h4 class="card-title">
+                    <?php echo var_dump($data)?>
+                </h4>
                 <h4 class="card-title">Edit Rekening</h4>
                 <form class="forms-sample" action="../crudrekening/proses_editrekening.php" method="POST">
                 <input type="hidden" name="id" value="<?php echo $data["id"] ?>" >

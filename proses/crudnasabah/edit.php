@@ -1,7 +1,7 @@
 <?php 
 include '../koneksi/koneksicrud.php';
-$id = $_GET['id'];
-$query = mysqli_query($koneksi, "select * from nasabah where id ='$id'");
+$id_nasabah = $_GET['id'];
+$query = mysqli_query($koneksi, "select * from nasabah where id_nasabah ='$id_nasabah'");
 $data= mysqli_fetch_array($query);
 ?>
 
@@ -32,10 +32,10 @@ $data= mysqli_fetch_array($query);
         <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tambah Nasabah</h4>
+                  <h4 class="card-title">Edit Nasabah</h4>
                   <form class="forms-sample" action="../crudnasabah/proses_edit.php" method="POST">
                     <div class="form-group">
-                      <input type="hidden" class="form-control" id="id" name="id"  value="<?php echo $data["id"] ?>">
+                      <input type="hidden" class="form-control" id="id_nasabah" name="id_nasabah"  value="<?php echo $data["id_nasabah"] ?>">
                     </div>
                     <div class="form-group">
                       <label for="nama">Nama</label>

@@ -46,7 +46,28 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                 <div class="card-body">
                   <h4 class="card-title">Tambah Nasabah</h4>
                   <form class="forms-sample" action="../crudrekening/rekening_aksi.php" method="POST">
-                    <div class="form-group">
+
+                  <div class="form-group">
+                    <label>Nasabah</label>
+                    <select class="js-example-basic-single w-100" id="nasabah_id" name="nasabah_id">
+                    <option value="">- Pilih Nasabah -</option>
+                    <?php
+                      include "../koneksi/koneksi.php";
+                      $sql = "select * from nasabah";
+                      $result = mysqli_query($koneksi, $sql);
+                      $options = "";
+
+                      while ($row = mysqli_fetch_array($result)) {
+                        # code...
+                        $id = $row['id'];
+                        $nama = $row['nama'];
+
+                        echo '<option value="'.$row['id'] . '">' . $row['nama'] . '</option>';
+                      }
+                    ?>
+                    </select>
+                  </div>
+                    <!-- <div class="form-group">
                       <label for="nasabah">Nasabah</label>
                       <select class="form-control form-control-lg" id="nasabah_id" name="nasabah_id" onchange="changeValue(this.value)" required>
                         <option value="">- Pilih -</option>
@@ -61,12 +82,12 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                           }  
                         ?>
                       </select>
-                    </div>
+                    </div> -->
                   
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="nama">Nama</label>
-                      <input type="text" class="form-control" id="nama" name="nama" placeholder="masukan nama" required readonly>
-                    </div>
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="masukan nama" required>
+                    </div> -->
                     <div class="form-group">
                       <label for="rek">Nomor Rekening</label>
                       <input type="text" class="form-control" id="rek" name="rek" placeholder="masukan rek" required>

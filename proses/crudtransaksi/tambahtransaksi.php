@@ -1,5 +1,6 @@
 <?php
 include('../koneksi/koneksi.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +35,34 @@ include('../koneksi/koneksi.php');
                     <form class="forms-sample" action="../crudtransaksi/transaksi_aksi.php" method="POST">
                       <div class="form-group">
                       <label>ID Pegawai</label>
-                        <input type="text" name="admin_id" class="form-control" placeholder="isi id pegawai" value="" required>
+                        <input type="text" name="admin_name" class="form-control" placeholder="isi id pegawai" value="<?php echo $_SESSION['username']?>" required readonly>
+                        <input type="hidden" name="admin_id" class="form-control" value="<?php echo $_SESSION['id_admin']?>" required>
                       </div>
-                        <label for="nasabah">ID Nasabah</label>
+
+                      <div class="form-group">
+                        <label>Nasabah</label>
+                        <select class="js-example-basic-single w-100" id="rekening_id" name="rekening_id">
+                          <option value="">- Pilih Nasabah -</option>
+                          <?php
+                            include "../koneksi/koneksi.php";
+                            // $sql = "select * from nasabah";
+                            $sql = 'SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id_nasabah';
+
+                            $result = mysqli_query($koneksi, $sql);
+                            $options = "";
+  
+                            while ($row = mysqli_fetch_array($result)) {
+                              # code...
+                              $nama = $row['nama'];
+                              $id_rekening = $row['id_rekening'];
+
+                              echo '<option value="'.$row['id_rekening'] . '"> ' . $row['nama'] . '</option>';
+                            }
+                          ?>
+                        </select>
+                      </div>
+
+                        <!-- <label for="nasabah">ID Nasabah</label>
                         <select class="form-control form-control-lg" id="id" name="id" onchange="changeValue(this.value)" required>
                           <option value="">- Pilih -</option>
                           <?php
@@ -44,48 +70,46 @@ include('../koneksi/koneksi.php');
                             $query = mysqli_query($koneksi, "select * from rekening");  
                             $result = mysqli_query($koneksi, "select * from rekening");  
                             
-                            $b          = "rek= new Array();\n;"; 
                             while ($d = mysqli_fetch_array($result)) {  
                                   echo '<option name="id" value="'.$d['id'] . '">' . $d['id'] . '</option>';   
-                            $b .= "rek['" . $d['id'] . "'] = {rek:'" . addslashes($d['rek'])."'};\n"; 
             
                             }  
                             ?> 
-                        </select>
-                      </div>
+                        </select>-->
+                      </div> 
                       
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>Nomor Rekening</label>
                         <input type="text" name="rek" id="rek" class="form-control" placeholder="isi rekening" required readonly>
-                      </div>
-                      <div class="rm-group">
+                      </div> -->
+                      <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" name="tanggal" class="form-control" placeholder="isi tanggal" required>
                       </div>
                       
-                      <div class="rm-group">
+                      <div class="form-group">
                         <label>Jumlah Setoran</label>
-                        <input type="text" name="jumlah" id="jumlah" class="form-control" placeholder="isi jumlah" required>
+                        <input type="number" name="jumlah" id="jumlah" class="form-control hitung" placeholder="isi jumlah" required>
                       </div> 
                       <div class="form-group">
                         <label>Setoran Awal</label>
-                        <input type="text" name="awal" id="awal" class="form-control hitung" placeholder="isi saldo awal" required>
+                        <input type="number" name="awal" id="awal" class="form-control " placeholder="isi saldo awal" required readonly>
                       </div>
                       <div class="form-group ">
                         <label>Saldo Akhir</label>
-                        <input type="text" name="akhir" id="akhir" class="form-control" placeholder="isi saldo akhir" required readonly>
+                        <input type="number" name="akhir" id="akhir" class="form-control" placeholder="isi saldo akhir" required readonly>
                       </div>
 
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>
-                      <script type="text/javascript">   
+                      <!-- <script type="text/javascript">   
                             <?php   
                               echo $b;
                             ?>  
                             function changeValue(id){     
                             document.getElementById('rek').value = rek[id].rek;   
                             };  
-                    </script>	
+                    </script>	 -->
                     </form>
                   </div>
                 </div>
@@ -113,12 +137,34 @@ include('../koneksi/koneksi.php');
 ?>
 
 <script type="text/javascript">
+  $(document).ready(function(){
+      $('#rekening_id').change(function(){
+      //Selected value
+      var rekening_id = $(this).val();
+      $.ajax({
+        url: 'get.php',
+        method: 'post',
+        data: 'rekening_id=' + rekening_id
+      }).done(function(books){
+        // console.log(books)
+        books = JSON.parse(books);
+        books.forEach(function(book){
+          document.getElementById('awal').value = book.akhir
+          // console.log(book.awal)
+        })
+      })
+      });
+  });
+
     $(".hitung").keyup(function(){
+      var jumlah= parseInt($("#jumlah").val())
       var awal= parseInt($("#awal").val())
       var akhir= parseInt($("#akhir").val())
-      var gettotal=awal;
+  
+      var gettotal  = awal + jumlah;
   
       $("#akhir").attr("value",gettotal)
+  
   });
 </script>
 

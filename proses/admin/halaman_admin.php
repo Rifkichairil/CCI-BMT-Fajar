@@ -1,9 +1,9 @@
     <?php
     include "../koneksi/koneksicrud.php";
-    $query = mysqli_query($koneksi, "select count(id) as jumlah from nasabah");
-    $query1 = mysqli_query($koneksi, "select count(id) as jumlah from admin");
-    $query2 = mysqli_query($koneksi, "select count(id) as jumlah from transaksi");
-    $query3 = mysqli_query($koneksi, "select count(id) as jumlah from penarikan");
+    $query = mysqli_query($koneksi, "select count(id_nasabah) as jumlah from nasabah");
+    $query1 = mysqli_query($koneksi, "select count(id_admin) as jumlah from admin");
+    $query2 = mysqli_query($koneksi, "select count(id_transaksi) as jumlah from transaksi");
+    $query3 = mysqli_query($koneksi, "select count(id_penarikan) as jumlah from penarikan");
     $data= mysqli_fetch_array($query);
     $dataadm= mysqli_fetch_array($query1);
     $datatr= mysqli_fetch_array($query2);

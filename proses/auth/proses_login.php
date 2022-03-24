@@ -19,6 +19,7 @@
         // buat session login dan username
         $_SESSION['username'] = $username;
         $_SESSION['level'] = "admin";
+        $_SESSION['id_admin'] = $data['id_admin'];
         //set session
         $_SESSION["login"] = true;
         // alihkan ke halaman dashboard admin

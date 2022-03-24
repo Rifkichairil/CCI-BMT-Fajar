@@ -7,7 +7,7 @@ $id = $_GET['id'];
 
  
 // menghapus data dari database
-mysqli_query($koneksi, "delete from rekening where id='$id'");
+mysqli_query($koneksi, "delete from rekening where id_rekening='$id'");
  
 // mengalihkan halaman kembali ke index.php
 header("location:../admin/rekening.php");

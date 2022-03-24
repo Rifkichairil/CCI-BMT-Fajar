@@ -50,21 +50,21 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                   <div class="form-group">
                     <label>Nasabah</label>
                     <select class="js-example-basic-single w-100" id="nasabah_id" name="nasabah_id">
-                    <option value="">- Pilih Nasabah -</option>
-                    <?php
-                      include "../koneksi/koneksi.php";
-                      $sql = "select * from nasabah";
-                      $result = mysqli_query($koneksi, $sql);
-                      $options = "";
+                      <option value="">- Pilih Nasabah -</option>
+                      <?php
+                        include "../koneksi/koneksi.php";
+                        $sql = "select * from nasabah";
+                        $result = mysqli_query($koneksi, $sql);
+                        $options = "";
 
-                      while ($row = mysqli_fetch_array($result)) {
-                        # code...
-                        $id = $row['id'];
-                        $nama = $row['nama'];
+                        while ($row = mysqli_fetch_array($result)) {
+                          # code...
+                          $id = $row['id'];
+                          $nama = $row['nama'];
 
-                        echo '<option value="'.$row['id'] . '">' . $row['nama'] . '</option>';
-                      }
-                    ?>
+                          echo '<option value="'.$row['id'] . '">' . $row['nama'] . '</option>';
+                        }
+                      ?>
                     </select>
                   </div>
                     <!-- <div class="form-group">

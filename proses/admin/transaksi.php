@@ -45,19 +45,20 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                 <div class="card">
                     <div class="card-body">
                     <div class="d-flex justify-content-end">
-                        <a href="../crudtransaksi/tambahtransaksi.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Nasabah</a>
+                        <a href="../crudtransaksi/tambahtransaksi.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Transaksi</a>
                         <div class="p-1"></div>
                         <a href="../crudtransaksi/eksport.php" class="btn btn-sm btn-success btn-rounded btn-fw">Cetak</a>
                     </div>
-                    <h4 class="card-title">List Rekening</h4>
+                    <h4 class="card-title">List Transaksi</h4>
 
                     <div class="table-responsive">
                         <table class="table" id="data">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>No</th>
+                                <th>Id Transaksi</th>
                                 <th>Id Pegawai</th>
-                                <th>Id Nasabah</th>
+                                <th>Id Rekening</th>
                                 <th>Nomor Rekening</th>
                                 <th>Tanggal</th>
                                 <th>Jumlah</th>
@@ -76,16 +77,17 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
+                                <td><?php echo $d['id_transaksi']; ?></td>
                                 <td><?php echo $d['admin_id']; ?></td>
-                                <td><?php echo $d['id']; ?></td>
+                                <td><?php echo $d['rekening_id']; ?></td>
                                 <td><?php echo $d['rekening']; ?></td>
                                 <td><?php echo $d['tanggal']; ?></td>
                                 <td><?php echo $d['jumlah']; ?></td>
                                 <td><?php echo $d['awal']; ?></td>
                                 <td><?php echo $d['akhir']; ?></td>
                                 <td>
-                                    <a href="../crudtransaksi/edit_transaksi.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
-                                    <a href="../crudtransaksi/delete_transaksi.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
+                                    <a href="../crudtransaksi/edit_transaksi.php?&id=<?php echo $d['id_transaksi']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
+                                    <a href="../crudtransaksi/delete_transaksi.php?&id=<?php echo $d['id_transaksi']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
                                 </td>
                             </tr>
                 

@@ -62,7 +62,7 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                           $id = $row['id'];
                           $nama = $row['nama'];
 
-                          echo '<option value="'.$row['id'] . '">' . $row['nama'] . '</option>';
+                          echo '<option value="'. $row['id_nasabah'] . '">' . $row['nama'] . '</option>';
                         }
                       ?>
                     </select>

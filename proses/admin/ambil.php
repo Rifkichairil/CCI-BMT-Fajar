@@ -45,7 +45,7 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                 <div class="card">
                     <div class="card-body">
                     <div class="d-flex justify-content-end">
-                        <a href="../crudpenarikan/tambahambil.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Nasabah</a>
+                        <a href="../crudpenarikan/tambahambil.php" class="btn btn-sm btn-primary btn-rounded btn-fw ">Tambah Penarikan</a>
                         <div class="p-1"></div>
                         <a href="../crudpenarikan/eksportambil.php" class="btn btn-sm btn-success btn-rounded btn-fw">Cetak</a>
                     </div>
@@ -84,8 +84,8 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                                 <td><?php echo $d['awal']; ?></td>
                                 <td><?php echo $d['akhir']; ?></td>
                                 <td>
-                                    <a href="../crudpenarikan/edit_ambil.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
-                                    <a href="../crudpenarikan/delete_ambil.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
+                                    <a href="../crudpenarikan/edit_ambil.php?&id=<?php echo $d['id_penarikan']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
+                                    <a href="../crudpenarikan/delete_ambil.php?&id=<?php echo $d['id_penarikan']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
                                 </td>
                             </tr>
                 

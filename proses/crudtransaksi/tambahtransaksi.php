@@ -78,10 +78,10 @@ session_start();
                         </select>-->
                       </div> 
                       
-                      <!-- <div class="form-group">
+                      <div class="form-group">
                         <label>Nomor Rekening</label>
                         <input type="text" name="rek" id="rek" class="form-control" placeholder="isi rekening" required readonly>
-                      </div> -->
+                      </div>
                       <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" name="tanggal" class="form-control" placeholder="isi tanggal" required>
@@ -149,6 +149,7 @@ session_start();
         // console.log(books)
         books = JSON.parse(books);
         books.forEach(function(book){
+          document.getElementById('rek').value = book.rek
           document.getElementById('awal').value = book.akhir
           // console.log(book.awal)
         })

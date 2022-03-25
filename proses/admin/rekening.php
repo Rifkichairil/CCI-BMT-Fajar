@@ -44,7 +44,7 @@
                                 <th>Nama</th>
                                 <th>Nomor Rekening</th>
                                 <th>Tanggal Buka</th>
-                                <th>Saldo</th>
+                                <th>Saldo Awal</th>
                                 <th>Saldo Akhir</th>
                                 <th>OPSI</th>
                             </tr>

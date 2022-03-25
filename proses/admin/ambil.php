@@ -54,10 +54,11 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                     <div class="table-responsive">
                         <table class="table" id="data">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>No</th>
-                                <th>Id Pegawai</th>
-                                <th>Id Rekening Nasabah</th>
+                                <!-- <th>Id Pegawai</th> -->
+                                <!-- <th>Id Rekening Nasabah</th> -->
+                                <th>Nama Nasabah</th>
                                 <th>Nomor Rekening</th>
                                 <th>Tanggal</th>
                                 <th>Jumlah</th>
@@ -70,14 +71,18 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                         <?php 
                             include '../koneksi/koneksicrud.php';
                             $no = 1;
-                            $data = mysqli_query($koneksi,"select * from penarikan");
+                            // $sql = 'SELECT * FROM transaksi INNER JOIN rekening ON transaksi.rekening_id = rekening.id_rekening';
+                            $sql = 'SELECT * FROM penarikan INNER JOIN rekening ON penarikan.rekening_id = rekening.id_rekening';
+
+                            $data = mysqli_query($koneksi, $sql);
                             while($d = mysqli_fetch_array($data)){
                         ?>
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['admin_id']; ?></td>
-                                <td><?php echo $d['rekening_id']; ?></td>
+                                <!-- <td><?php echo $d['admin_id']; ?></td> -->
+                                <!-- <td><?php echo $d['rekening_id']; ?></td> -->
+                                <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['rekening']; ?></td>
                                 <td><?php echo $d['tanggal']; ?></td>
                                 <td><?php echo $d['jumlah']; ?></td>

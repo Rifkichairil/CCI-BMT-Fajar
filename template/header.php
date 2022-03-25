@@ -16,7 +16,7 @@
             <strong>Pengaturan Akun</strong>
           </div>
           <a class="dropdown-item" href="../auth/logout.php">
-            <i class="fa fa-lock"></i> Logout</a>
+            <i class="fa fa-lock"></i> <?php echo $_SESSION['username']?></a>
         </div>
       </li>
     </ul>

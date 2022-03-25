@@ -39,7 +39,7 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>ID Rekening</th>
+                                <!-- <th>ID Rekening</th> -->
                                 <th>ID Nasabah</th>
                                 <th>Nama</th>
                                 <th>Nomor Rekening</th>
@@ -60,7 +60,7 @@
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['id_rekening']; ?></td>
+                                <!-- <td><?php echo $d['id_rekening']; ?></td> -->
                                 <td><?php echo $d['nasabah_id']; ?></td>
                                 <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['rek']; ?></td>

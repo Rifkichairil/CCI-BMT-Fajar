@@ -1,18 +1,18 @@
 <?php
-include('../koneksi/koneksi.php');
+    include('../koneksi/koneksi.php');
 ?>
 <?php
-session_start();
-// cek apakah user sudah login
-if(!isset($_SESSION['login'])){
-	header ("location :../auth/login.php");                       
-} 
-// cek user
-if(($_SESSION['level']!="admin")){
-die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
-    window.location = 'halaman_admin.php'</script>'");
-//Jika Bukan Admin tidak bisa Lanjut
-}
+    session_start();
+    // cek apakah user sudah login
+    if(!isset($_SESSION['login'])){
+        header ("location :../auth/login.php");                       
+    } 
+    // cek user
+    if(($_SESSION['level']!="admin")){
+    die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
+        window.location = 'halaman_admin.php'</script>'");
+    //Jika Bukan Admin tidak bisa Lanjut
+    }
 ?>
 
 
@@ -56,9 +56,10 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Id Transaksi</th>
-                                <th>Id Pegawai</th>
-                                <th>Id Rekening</th>
+                                <!-- <th>Id Transaksi</th> -->
+                                <!-- <th>Id Pegawai</th> -->
+                                <!-- <th>Id Rekening</th> -->
+                                <th>Nama Nasabah</th>
                                 <th>Nomor Rekening</th>
                                 <th>Tanggal</th>
                                 <th>Jumlah</th>
@@ -71,15 +72,19 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                         <?php 
                             include '../koneksi/koneksicrud.php';
                             $no = 1;
-                            $data = mysqli_query($koneksi,"select * from transaksi");
+                            // $sql = 'SELECT * FROM rekening INNER JOIN nasabah ON rekening.nasabah_id = nasabah.id_nasabah';
+                            $sql = 'SELECT * FROM transaksi INNER JOIN rekening ON transaksi.rekening_id = rekening.id_rekening';
+
+                            $data = mysqli_query($koneksi, $sql);
                             while($d = mysqli_fetch_array($data)){
                         ?>
 
                             <tr align="center">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['id_transaksi']; ?></td>
-                                <td><?php echo $d['admin_id']; ?></td>
-                                <td><?php echo $d['rekening_id']; ?></td>
+                                <!-- <td><?php echo $d['id_transaksi']; ?></td> -->
+                                <!-- <td><?php echo $d['admin_id']; ?></td> -->
+                                <!-- <td><?php echo $d['rekening_id']; ?></td> -->
+                                <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['rekening']; ?></td>
                                 <td><?php echo $d['tanggal']; ?></td>
                                 <td><?php echo $d['jumlah']; ?></td>

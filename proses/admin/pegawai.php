@@ -50,9 +50,9 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                     <div class="table-responsive">
                         <table class="table" id="data">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>NO</th>
-                                <th>Id Pegawai</th>
+                                <!-- <th>Id Pegawai</th> -->
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>Jabatan</th>
@@ -72,7 +72,7 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
 
                             <tr align="center">
                             <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['id']; ?></td>
+                                <!-- <td><?php echo $d['id_admin']; ?></td> -->
                                 <td><?php echo $d['nama']; ?></td>
                                 <td><?php echo $d['alamat']; ?></td>
                                 <td><?php echo $d['jabatan']; ?></td>
@@ -80,8 +80,8 @@ die("'<script>alert('Pemberitahuan: akses tidak di izinkan');
                                 <td><?php echo $d['password']; ?></td>
                                 <td><?php echo $d['level']; ?></td>
                                 <td>
-                                    <a href="../crudpegawai/editpegawai.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
-                                    <a href="../crudpegawai/deletepegawai.php?&id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
+                                    <a href="../crudpegawai/editpegawai.php?&id=<?php echo $d['id_admin']; ?>" class="btn btn-sm btn-info btn-rounded btn-fw">Edit</a>
+                                    <a href="../crudpegawai/deletepegawai.php?&id=<?php echo $d['id_admin']; ?>" class="btn btn-sm btn-danger btn-rounded btn-fw">Delete</a>
                                 </td>
                             </tr>
                 

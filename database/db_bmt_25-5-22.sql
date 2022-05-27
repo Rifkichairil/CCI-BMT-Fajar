@@ -59,7 +59,7 @@ CREATE TABLE `nasabah` (
   `telp` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `penarikan` (
   KEY `fk_penarikan_rekening1_idx` (`rekening_id`),
   CONSTRAINT `fk_penarikan_rekening1` FOREIGN KEY (`rekening_id`) REFERENCES `rekening` (`id_rekening`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_transaksi_admin0` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id_admin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,8 +122,8 @@ CREATE TABLE `rekening` (
   `akhir` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_rekening`),
   KEY `fk_rekening_nasabah1_idx` (`nasabah_id`),
-  CONSTRAINT `fk_rekening_nasabah1` FOREIGN KEY (`nasabah_id`) REFERENCES `nasabah` (`id_nasabah`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_rekening_nasabah1` FOREIGN KEY (`nasabah_id`) REFERENCES `nasabah` (`id_nasabah`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `rekening` (
 
 LOCK TABLES `rekening` WRITE;
 /*!40000 ALTER TABLE `rekening` DISABLE KEYS */;
-INSERT INTO `rekening` VALUES (2,1,'dodits','11111','2022-03-25','200000','250000'),(3,2,'doddy','22222','2022-03-23','100000','117000'),(5,3,'anggi','313131','2022-03-24','25000','25000');
+INSERT INTO `rekening` VALUES (8,1,'dodits','313131','2022-05-28','111111','111111'),(9,2,'doddy','1111','2022-05-28','1000002','1000002');
 /*!40000 ALTER TABLE `rekening` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,8 +156,8 @@ CREATE TABLE `transaksi` (
   KEY `fk_transaksi_admin_idx` (`admin_id`),
   KEY `fk_transaksi_rekening1_idx` (`rekening_id`),
   CONSTRAINT `fk_transaksi_admin` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id_admin`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_transaksi_rekening1` FOREIGN KEY (`rekening_id`) REFERENCES `rekening` (`id_rekening`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_transaksi_rekening1` FOREIGN KEY (`rekening_id`) REFERENCES `rekening` (`id_rekening`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,6 @@ CREATE TABLE `transaksi` (
 
 LOCK TABLES `transaksi` WRITE;
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
-INSERT INTO `transaksi` VALUES (10,1,5,'313131','10000','2022-03-26','135000','25000');
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -179,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-25 14:20:36
+-- Dump completed on 2022-05-28  1:35:54

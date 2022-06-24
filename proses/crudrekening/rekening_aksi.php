@@ -16,7 +16,6 @@
         die("'<script>alert('Pemberitahuan: Minimal awal setoran adalan Rp. 20.000');
         window.location = 'tambahrekening.php'
         </script>'");
-
     }
 
     // menginput data ke database
